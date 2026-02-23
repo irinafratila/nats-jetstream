@@ -83,8 +83,6 @@ func startPublishers(ctx context.Context, js jetstream.JetStream, namespace stri
 					panic(fmt.Errorf("publishing message: %w", err))
 				}
 
-				// slog.Info("Publishing message", "subject", fmt.Sprintf("event.%v.%v", i, count))
-
 				count++
 
 				select {

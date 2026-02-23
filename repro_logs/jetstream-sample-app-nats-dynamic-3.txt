@@ -1,0 +1,189 @@
+Waiting for NATS to be ready...
+Checking NATS port (attempt 1/15)...
+[8] 2026/02/23 12:00:23.441832 [INF] Starting nats-server
+[8] 2026/02/23 12:00:23.442011 [INF]   Version:  2.12.4
+[8] 2026/02/23 12:00:23.442016 [INF]   Git:      [34894c1]
+[8] 2026/02/23 12:00:23.442024 [DBG]   Go build: go1.25.6
+[8] 2026/02/23 12:00:23.442025 [INF]   Cluster:  local
+[8] 2026/02/23 12:00:23.442027 [INF]   Name:     0f64530baf19
+[8] 2026/02/23 12:00:23.442031 [INF]   Node:     BM0RIz5s
+[8] 2026/02/23 12:00:23.442032 [INF]   ID:       NDNPN5PYNBYB6J6SB6IFFO7P4PQAGQMMERJPZANAG33O6ZYFFWB5YJGK
+[8] 2026/02/23 12:00:23.442083 [DBG] Created system account: "$SYS"
+[8] 2026/02/23 12:00:23.442600 [INF] Starting JetStream
+[8] 2026/02/23 12:00:23.442619 [WRN] Temporary storage directory used, data could be lost on system reboot
+[8] 2026/02/23 12:00:23.443880 [DBG] JetStream creating dynamic configuration - 46.96 GB memory, 454.50 GB disk
+[8] 2026/02/23 12:00:23.444231 [INF]     _ ___ _____ ___ _____ ___ ___   _   __  __
+[8] 2026/02/23 12:00:23.444252 [INF]  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  |
+[8] 2026/02/23 12:00:23.444255 [INF] | || | _|  | | \__ \ | | |   / _| / _ \| |\/| |
+[8] 2026/02/23 12:00:23.444255 [INF]  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_|
+[8] 2026/02/23 12:00:23.444256 [INF] 
+[8] 2026/02/23 12:00:23.444257 [INF]          https://docs.nats.io/jetstream
+[8] 2026/02/23 12:00:23.444258 [INF] 
+[8] 2026/02/23 12:00:23.444258 [INF] ---------------- JETSTREAM ----------------
+[8] 2026/02/23 12:00:23.444259 [INF]   Strict:          true
+[8] 2026/02/23 12:00:23.444265 [INF]   Max Memory:      46.96 GB
+[8] 2026/02/23 12:00:23.444266 [INF]   Max Storage:     454.50 GB
+[8] 2026/02/23 12:00:23.444266 [INF]   Store Directory: "/tmp/nats/jetstream"
+[8] 2026/02/23 12:00:23.444267 [INF]   API Level:       2
+[8] 2026/02/23 12:00:23.444268 [INF] -------------------------------------------
+[8] 2026/02/23 12:00:23.444441 [DBG]   Exports:
+[8] 2026/02/23 12:00:23.444469 [DBG]      $JS.API.>
+[8] 2026/02/23 12:00:23.444715 [DBG] Enabled JetStream for account "$G"
+[8] 2026/02/23 12:00:23.444756 [DBG]   Max Memory:      -1 B
+[8] 2026/02/23 12:00:23.444760 [DBG]   Max Storage:     -1 B
+[8] 2026/02/23 12:00:23.445428 [DBG] JetStream state for account "$G" recovered
+[8] 2026/02/23 12:00:23.445486 [INF] Starting JetStream cluster
+[8] 2026/02/23 12:00:23.445490 [DBG] JetStream cluster checking for stable cluster name and peers
+[8] 2026/02/23 12:00:23.445492 [INF] Creating JetStream metadata controller
+[8] 2026/02/23 12:00:23.448805 [INF] JetStream cluster bootstrapping
+[8] 2026/02/23 12:00:23.448836 [DBG] JetStream cluster initial peers: [BM0RIz5s]
+[8] 2026/02/23 12:00:23.448854 [DBG] Determining expected peer size for JetStream meta group
+[8] 2026/02/23 12:00:23.456493 [DBG] RAFT [BM0RIz5s - _meta_] Started
+[8] 2026/02/23 12:00:23.456549 [DBG] RAFT [BM0RIz5s - _meta_] Starting campaign
+[8] 2026/02/23 12:00:23.456589 [INF] Took 13.974189ms to start JetStream
+[8] 2026/02/23 12:00:23.456775 [DBG] Starting metadata monitor
+[8] 2026/02/23 12:00:23.459761 [INF] Listening for client connections on 0.0.0.0:4222
+[8] 2026/02/23 12:00:23.459797 [DBG] Get non local IPs for "0.0.0.0"
+[8] 2026/02/23 12:00:23.459999 [DBG]   ip=172.18.0.4
+[8] 2026/02/23 12:00:23.460058 [INF] Server is ready
+[8] 2026/02/23 12:00:23.460151 [INF] Cluster name is local
+[8] 2026/02/23 12:00:23.460332 [DBG] maxprocs: Leaving GOMAXPROCS=32: CPU quota undefined
+[8] 2026/02/23 12:00:23.460362 [INF] Listening for route connections on 0.0.0.0:6222
+[8] 2026/02/23 12:00:23.560205 [WRN] Waiting for routing to be established...
+[8] 2026/02/23 12:00:23.852234 [INF] 172.18.0.5:55128 - rid:8 - Route connection created
+[8] 2026/02/23 12:00:23.852360 [INF] 172.18.0.5:55126 - rid:9 - Route connection created
+[8] 2026/02/23 12:00:23.852776 [DBG] 172.18.0.5:55128 - rid:8 - Registering remote route "NCXT5IVRJUSWLPKHRSX3IU7OIOZGDXK4CLKGMRY2FFCPBE6X5FNSZF2F"
+[8] 2026/02/23 12:00:23.853060 [DBG] 172.18.0.5:55126 - rid:9 - Sent local subscriptions to route
+[8] 2026/02/23 12:00:23.853084 [DBG] 172.18.0.5:55126 - rid:9 - Registering remote route "NCXT5IVRJUSWLPKHRSX3IU7OIOZGDXK4CLKGMRY2FFCPBE6X5FNSZF2F" for account "$SYS"
+[8] 2026/02/23 12:00:23.853689 [INF] 172.18.0.5:55132 - rid:10 - Route connection created
+[8] 2026/02/23 12:00:23.854065 [DBG] 172.18.0.5:55132 - rid:10 - Registering remote route "NCXT5IVRJUSWLPKHRSX3IU7OIOZGDXK4CLKGMRY2FFCPBE6X5FNSZF2F"
+[8] 2026/02/23 12:00:23.854810 [INF] 172.18.0.5:55144 - rid:11 - Route connection created
+[8] 2026/02/23 12:00:23.855177 [DBG] 172.18.0.5:55144 - rid:11 - Registering remote route "NCXT5IVRJUSWLPKHRSX3IU7OIOZGDXK4CLKGMRY2FFCPBE6X5FNSZF2F"
+[8] 2026/02/23 12:00:23.862425 [DBG] Recovered JetStream cluster metadata
+[8] 2026/02/23 12:00:23.862460 [DBG] RAFT [BM0RIz5s - _meta_] Not snapshotting as there are no applied entries
+[8] 2026/02/23 12:00:23.862566 [WRN] JetStream has not established contact with a meta leader
+[8] 2026/02/23 12:00:24.145378 [INF] 172.18.0.6:43726 - rid:12 - Route connection created
+[8] 2026/02/23 12:00:24.145405 [INF] 172.18.0.6:43728 - rid:13 - Route connection created
+[8] 2026/02/23 12:00:24.145853 [DBG] 172.18.0.6:43728 - rid:13 - Registering remote route "NCG7RMIHQ2GSRTJ7FRCW4VOC7LWNBWSNVTW56QQSF5NXYX7CATNSYNMZ"
+[8] 2026/02/23 12:00:24.145935 [DBG] 172.18.0.6:43726 - rid:12 - Sent local subscriptions to route
+[8] 2026/02/23 12:00:24.145938 [DBG] 172.18.0.6:43726 - rid:12 - Registering remote route "NCG7RMIHQ2GSRTJ7FRCW4VOC7LWNBWSNVTW56QQSF5NXYX7CATNSYNMZ" for account "$SYS"
+[8] 2026/02/23 12:00:24.146693 [INF] 172.18.0.6:43736 - rid:14 - Route connection created
+[8] 2026/02/23 12:00:24.146973 [DBG] 172.18.0.6:43736 - rid:14 - Registering remote route "NCG7RMIHQ2GSRTJ7FRCW4VOC7LWNBWSNVTW56QQSF5NXYX7CATNSYNMZ"
+[8] 2026/02/23 12:00:24.235495 [DBG] RAFT [BM0RIz5s - _meta_] Switching to candidate
+[8] 2026/02/23 12:00:24.245605 [DBG] RAFT [BM0RIz5s - _meta_] Sending out voteRequest {term:1 lastTerm:0 lastIndex:0 candidate:BM0RIz5s reply:}
+[8] 2026/02/23 12:00:24.258290 [DBG] RAFT [BM0RIz5s - _meta_] Received a voteResponse &{term:1 peer:hN2W5QPf granted:true empty:true}
+[8] 2026/02/23 12:00:24.258357 [DBG] RAFT [BM0RIz5s - _meta_] Switching to leader
+[8] 2026/02/23 12:00:24.260020 [DBG] RAFT [BM0RIz5s - _meta_] Received a voteResponse &{term:1 peer:butFCPLG granted:true empty:true}
+[8] 2026/02/23 12:00:24.264401 [DBG] RAFT [BM0RIz5s - _meta_] Added peer "butFCPLG"
+[8] 2026/02/23 12:00:24.264469 [DBG] RAFT [BM0RIz5s - _meta_] Installing snapshot of 0 bytes [1:2]
+[8] 2026/02/23 12:00:24.272103 [INF] Self is new JetStream cluster metadata leader
+[8] 2026/02/23 12:00:24.272251 [DBG] RAFT [BM0RIz5s - _meta_] Not snapshotting as entry 2 is not available
+[8] 2026/02/23 12:00:24.274615 [DBG] RAFT [BM0RIz5s - _meta_] Expanding our clustersize: 2 -> 3
+[8] 2026/02/23 12:00:24.281653 [DBG] RAFT [BM0RIz5s - _meta_] Added peer "hN2W5QPf"
+[8] 2026/02/23 12:00:24.286119 [DBG] RAFT [BM0RIz5s - _meta_] Installing snapshot of 0 bytes [1:3]
+Checking NATS port (attempt 2/15)...
+NATS port 4222 is open!
+Checking for existing streams...
+[8] 2026/02/23 12:00:24.439318 [DBG] [::1]:35639 - cid:15 - Client connection created
+[8] 2026/02/23 12:00:24.439529 [DBG] [::1]:35639 - cid:15 - Client connection closed: Client Closed
+[8] 2026/02/23 12:00:24.457374 [DBG] Checking JetStream cluster state
+[8] 2026/02/23 12:00:24.459130 [DBG] 127.0.0.1:41752 - cid:16 - Client connection created
+[8] 2026/02/23 12:00:24.462437 [DBG] 127.0.0.1:41752 - cid:16 - "v1.48.0:go:NATS CLI Version 0.3.1" - Client connection closed: Client Closed
+No streams found, creating event_stream...
+[8] 2026/02/23 12:00:24.475337 [DBG] 127.0.0.1:41766 - cid:17 - Client connection created
+[8] 2026/02/23 12:00:24.481565 [DBG] JetStream cluster creating raft group:&{Name:S-R3M-O00mero4 Peers:[butFCPLG hN2W5QPf BM0RIz5s] Storage:Memory Cluster:local Preferred:hN2W5QPf ScaleUp:false node:<nil>}
+[8] 2026/02/23 12:00:24.489527 [DBG] RAFT [BM0RIz5s - S-R3M-O00mero4] Started
+[8] 2026/02/23 12:00:24.489656 [DBG] RAFT [BM0RIz5s - S-R3M-O00mero4] Update peers from leader to map[BM0RIz5s:0xc000484fc0 butFCPLG:0xc000484ff0 hN2W5QPf:0xc000485020]
+[8] 2026/02/23 12:00:24.495939 [DBG] Starting stream monitor for '$G > event_stream' [S-R3M-O00mero4]
+[8] 2026/02/23 12:00:24.551203 [DBG] RAFT [BM0RIz5s - S-R3M-O00mero4] Received a voteRequest &{term:1 lastTerm:0 lastIndex:0 candidate:hN2W5QPf reply:$NRG.R.CTNxKbjE}
+[8] 2026/02/23 12:00:24.551257 [DBG] RAFT [BM0RIz5s - S-R3M-O00mero4] Canceling catchup subscription since we are now up to date
+[8] 2026/02/23 12:00:24.563616 [DBG] RAFT [BM0RIz5s - S-R3M-O00mero4] Sending a voteResponse &{term:1 peer:BM0RIz5s granted:true empty:false} -> "$NRG.R.CTNxKbjE"
+[8] 2026/02/23 12:00:24.564405 [DBG] RAFT [BM0RIz5s - S-R3M-O00mero4] AppendEntry updating leader to "hN2W5QPf"
+[8] 2026/02/23 12:00:24.564896 [DBG] RAFT [BM0RIz5s - S-R3M-O00mero4] Update peers from leader to map[BM0RIz5s:0xc000484fc0 butFCPLG:0xc000484ff0 hN2W5QPf:0xc000485020]
+Stream event_stream was created
+
+Information for Stream event_stream created 2026-02-23 12:00:24
+
+               Description: All event messages
+                  Subjects: event.>
+                  Replicas: 3
+                   Storage: Memory
+
+Options:
+
+                 Retention: Interest
+           Acknowledgments: true
+            Discard Policy: Old
+          Duplicate Window: 2m0s
+                Direct Get: true
+      Allows Batch Publish: false
+           Allows Counters: false
+         Allows Msg Delete: true
+    Allows Per-Message TTL: false
+              Allows Purge: true
+          Allows Schedules: false
+            Allows Rollups: false
+
+Limits:
+
+          Maximum Messages: unlimited
+       Maximum Per Subject: unlimited
+             Maximum Bytes: unlimited
+               Maximum Age: 1y0d0h0m0s
+      Maximum Message Size: unlimited
+         Maximum Consumers: unlimited
+  Consumer Max Ack Pending: 100
+
+Cluster Information:
+
+                      Name: local
+             Cluster Group: S-R3M-O00mero4
+                    Leader: 4f74b644eb62 (187µs)
+                   Replica: 0f64530baf19, current, seen 276µs ago
+                   Replica: 21a35ed9c0e6, outdated, not seen, 1 operation behind
+
+State:
+
+              Host Version: 2.12.4
+        Required API Level: 0 hosted at level 2
+                  Messages: 0
+                     Bytes: 0 B
+            First Sequence: 0
+             Last Sequence: 0
+          Active Consumers: 0
+Stream event_stream created successfully!
+[8] 2026/02/23 12:00:24.579397 [DBG] 127.0.0.1:41766 - cid:17 - "v1.48.0:go:NATS CLI Version 0.3.1" - Client connection closed: Client Closed
+[8] 2026/02/23 12:00:24.877257 [DBG] 172.18.0.5:55128 - rid:8 - Router Ping Timer
+[8] 2026/02/23 12:00:24.901873 [DBG] 172.18.0.5:55126 - rid:9 - Router Ping Timer
+[8] 2026/02/23 12:00:24.935972 [DBG] 172.18.0.5:55144 - rid:11 - Router Ping Timer
+[8] 2026/02/23 12:00:25.021404 [DBG] 172.18.0.5:55132 - rid:10 - Router Ping Timer
+[8] 2026/02/23 12:00:25.152554 [DBG] 172.18.0.6:43726 - rid:12 - Router Ping Timer
+[8] 2026/02/23 12:00:25.218878 [DBG] 172.18.0.6:43736 - rid:14 - Router Ping Timer
+[8] 2026/02/23 12:00:25.319930 [DBG] 172.18.0.6:43728 - rid:13 - Router Ping Timer
+[8] 2026/02/23 12:00:28.751098 [DBG] 172.18.0.2:53016 - cid:22 - Client connection created
+[8] 2026/02/23 12:00:28.755310 [DBG] JetStream cluster creating raft group:&{Name:C-R3M-7fksC7uJ Peers:[butFCPLG hN2W5QPf BM0RIz5s] Storage:Memory Cluster:local Preferred:hN2W5QPf ScaleUp:false node:<nil>}
+[8] 2026/02/23 12:00:28.761312 [DBG] RAFT [BM0RIz5s - C-R3M-7fksC7uJ] Started
+[8] 2026/02/23 12:00:28.761545 [DBG] Starting consumer monitor for '$G > event_stream > 013086d0586f-consumer-0' [C-R3M-7fksC7uJ]
+[8] 2026/02/23 12:00:28.820099 [DBG] RAFT [BM0RIz5s - C-R3M-7fksC7uJ] Received a voteRequest &{term:1 lastTerm:0 lastIndex:0 candidate:hN2W5QPf reply:$NRG.R.ZCTQMtUc}
+[8] 2026/02/23 12:00:28.820140 [DBG] RAFT [BM0RIz5s - C-R3M-7fksC7uJ] Canceling catchup subscription since we are now up to date
+[8] 2026/02/23 12:00:28.829838 [DBG] RAFT [BM0RIz5s - C-R3M-7fksC7uJ] Sending a voteResponse &{term:1 peer:BM0RIz5s granted:true empty:false} -> "$NRG.R.ZCTQMtUc"
+[8] 2026/02/23 12:00:28.830413 [DBG] RAFT [BM0RIz5s - C-R3M-7fksC7uJ] AppendEntry updating leader to "hN2W5QPf"
+[8] 2026/02/23 12:00:28.830994 [DBG] RAFT [BM0RIz5s - C-R3M-7fksC7uJ] Update peers from leader to map[BM0RIz5s:0xc000428000 butFCPLG:0xc000428030 hN2W5QPf:0xc000428060]
+[8] 2026/02/23 12:00:30.995218 [DBG] 172.18.0.2:53016 - cid:22 - "v1.48.0:go" - Client Ping Timer
+[8] 2026/02/23 12:00:53.844874 [DBG] JetStream cluster checking for orphans
+[8] 2026/02/23 12:00:54.859559 [DBG] 172.18.0.5:55128 - rid:8 - Router Ping Timer
+[8] 2026/02/23 12:00:54.884250 [DBG] 172.18.0.5:55126 - rid:9 - Router Ping Timer
+[8] 2026/02/23 12:00:54.918928 [DBG] 172.18.0.5:55144 - rid:11 - Router Ping Timer
+[8] 2026/02/23 12:00:55.003779 [DBG] 172.18.0.5:55132 - rid:10 - Router Ping Timer
+[8] 2026/02/23 12:00:55.134747 [DBG] 172.18.0.6:43726 - rid:12 - Router Ping Timer
+[8] 2026/02/23 12:00:55.200907 [DBG] 172.18.0.6:43736 - rid:14 - Router Ping Timer
+[8] 2026/02/23 12:00:55.302606 [DBG] 172.18.0.6:43728 - rid:13 - Router Ping Timer
+[8] 2026/02/23 12:00:58.864612 [DBG] 172.18.0.2:53016 - cid:22 - "v1.48.0:go" - Client connection closed: Client Closed
+[8] 2026/02/23 12:01:23.422814 [DBG] RAFT [BM0RIz5s - _meta_] Installing snapshot of 894 bytes [1:5]
+[8] 2026/02/23 12:01:24.842835 [DBG] 172.18.0.5:55128 - rid:8 - Router Ping Timer
+[8] 2026/02/23 12:01:24.867466 [DBG] 172.18.0.5:55126 - rid:9 - Router Ping Timer
+[8] 2026/02/23 12:01:24.902643 [DBG] 172.18.0.5:55144 - rid:11 - Router Ping Timer
+[8] 2026/02/23 12:01:24.987283 [DBG] 172.18.0.5:55132 - rid:10 - Router Ping Timer
+[8] 2026/02/23 12:01:25.118353 [DBG] 172.18.0.6:43726 - rid:12 - Router Ping Timer
+[8] 2026/02/23 12:01:25.184837 [DBG] 172.18.0.6:43736 - rid:14 - Router Ping Timer
+[8] 2026/02/23 12:01:25.286201 [DBG] 172.18.0.6:43728 - rid:13 - Router Ping Timer

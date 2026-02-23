@@ -1,0 +1,160 @@
+Waiting for NATS to be ready...
+Checking NATS port (attempt 1/15)...
+[7] 2026/02/23 12:00:24.131862 [INF] Starting nats-server
+[7] 2026/02/23 12:00:24.131935 [INF]   Version:  2.12.4
+[7] 2026/02/23 12:00:24.131938 [INF]   Git:      [34894c1]
+[7] 2026/02/23 12:00:24.131943 [DBG]   Go build: go1.25.6
+[7] 2026/02/23 12:00:24.131944 [INF]   Cluster:  local
+[7] 2026/02/23 12:00:24.131944 [INF]   Name:     4f74b644eb62
+[7] 2026/02/23 12:00:24.131947 [INF]   Node:     hN2W5QPf
+[7] 2026/02/23 12:00:24.131948 [INF]   ID:       NCG7RMIHQ2GSRTJ7FRCW4VOC7LWNBWSNVTW56QQSF5NXYX7CATNSYNMZ
+[7] 2026/02/23 12:00:24.131966 [DBG] Created system account: "$SYS"
+[7] 2026/02/23 12:00:24.132156 [INF] Starting JetStream
+[7] 2026/02/23 12:00:24.132182 [WRN] Temporary storage directory used, data could be lost on system reboot
+[7] 2026/02/23 12:00:24.133030 [DBG] JetStream creating dynamic configuration - 46.96 GB memory, 454.50 GB disk
+[7] 2026/02/23 12:00:24.133304 [INF]     _ ___ _____ ___ _____ ___ ___   _   __  __
+[7] 2026/02/23 12:00:24.133328 [INF]  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  |
+[7] 2026/02/23 12:00:24.133331 [INF] | || | _|  | | \__ \ | | |   / _| / _ \| |\/| |
+[7] 2026/02/23 12:00:24.133332 [INF]  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_|
+[7] 2026/02/23 12:00:24.133332 [INF] 
+[7] 2026/02/23 12:00:24.133333 [INF]          https://docs.nats.io/jetstream
+[7] 2026/02/23 12:00:24.133333 [INF] 
+[7] 2026/02/23 12:00:24.133334 [INF] ---------------- JETSTREAM ----------------
+[7] 2026/02/23 12:00:24.133334 [INF]   Strict:          true
+[7] 2026/02/23 12:00:24.133338 [INF]   Max Memory:      46.96 GB
+[7] 2026/02/23 12:00:24.133340 [INF]   Max Storage:     454.50 GB
+[7] 2026/02/23 12:00:24.133340 [INF]   Store Directory: "/tmp/nats/jetstream"
+[7] 2026/02/23 12:00:24.133341 [INF]   API Level:       2
+[7] 2026/02/23 12:00:24.133342 [INF] -------------------------------------------
+[7] 2026/02/23 12:00:24.133410 [DBG]   Exports:
+[7] 2026/02/23 12:00:24.133435 [DBG]      $JS.API.>
+[7] 2026/02/23 12:00:24.133520 [DBG] Enabled JetStream for account "$G"
+[7] 2026/02/23 12:00:24.133544 [DBG]   Max Memory:      -1 B
+[7] 2026/02/23 12:00:24.133547 [DBG]   Max Storage:     -1 B
+[7] 2026/02/23 12:00:24.134311 [DBG] JetStream state for account "$G" recovered
+[7] 2026/02/23 12:00:24.134363 [INF] Starting JetStream cluster
+[7] 2026/02/23 12:00:24.134367 [DBG] JetStream cluster checking for stable cluster name and peers
+[7] 2026/02/23 12:00:24.134369 [INF] Creating JetStream metadata controller
+[7] 2026/02/23 12:00:24.136859 [INF] JetStream cluster bootstrapping
+[7] 2026/02/23 12:00:24.136885 [DBG] JetStream cluster initial peers: [hN2W5QPf]
+[7] 2026/02/23 12:00:24.136894 [DBG] Determining expected peer size for JetStream meta group
+[7] 2026/02/23 12:00:24.141046 [DBG] RAFT [hN2W5QPf - _meta_] Started
+[7] 2026/02/23 12:00:24.141094 [DBG] RAFT [hN2W5QPf - _meta_] Starting campaign
+[7] 2026/02/23 12:00:24.141112 [INF] Took 8.932816ms to start JetStream
+[7] 2026/02/23 12:00:24.141266 [DBG] Starting metadata monitor
+[7] 2026/02/23 12:00:24.143081 [INF] Listening for client connections on 0.0.0.0:4222
+[7] 2026/02/23 12:00:24.143105 [DBG] Get non local IPs for "0.0.0.0"
+[7] 2026/02/23 12:00:24.143290 [DBG]   ip=172.18.0.6
+[7] 2026/02/23 12:00:24.143335 [INF] Server is ready
+[7] 2026/02/23 12:00:24.143429 [INF] Cluster name is local
+[7] 2026/02/23 12:00:24.143496 [DBG] maxprocs: Leaving GOMAXPROCS=32: CPU quota undefined
+[7] 2026/02/23 12:00:24.143517 [INF] Listening for route connections on 0.0.0.0:6222
+[7] 2026/02/23 12:00:24.144863 [DBG] Trying to connect to route on nats-dynamic:6222 (172.18.0.4:6222)
+[7] 2026/02/23 12:00:24.144938 [DBG] Trying to connect to route on nats-dynamic:6222 (172.18.0.4:6222)
+[7] 2026/02/23 12:00:24.145282 [DBG] 172.18.0.4:6222 - rid:8 - Route connect msg sent
+[7] 2026/02/23 12:00:24.145304 [DBG] 172.18.0.4:6222 - rid:9 - Route connect msg sent
+[7] 2026/02/23 12:00:24.145358 [INF] 172.18.0.4:6222 - rid:8 - Route connection created
+[7] 2026/02/23 12:00:24.145387 [INF] 172.18.0.4:6222 - rid:9 - Route connection created
+[7] 2026/02/23 12:00:24.145615 [DBG] 172.18.0.4:6222 - rid:8 - Registering remote route "NDNPN5PYNBYB6J6SB6IFFO7P4PQAGQMMERJPZANAG33O6ZYFFWB5YJGK"
+[7] 2026/02/23 12:00:24.145698 [DBG] 172.18.0.4:6222 - rid:9 - Sent local subscriptions to route
+[7] 2026/02/23 12:00:24.145717 [DBG] 172.18.0.4:6222 - rid:9 - Registering remote route "NDNPN5PYNBYB6J6SB6IFFO7P4PQAGQMMERJPZANAG33O6ZYFFWB5YJGK" for account "$SYS"
+[7] 2026/02/23 12:00:24.146351 [INF] 172.18.0.5:59566 - rid:10 - Route connection created
+[7] 2026/02/23 12:00:24.146423 [DBG] Trying to connect to route on nats-dynamic:6222 (172.18.0.4:6222)
+[7] 2026/02/23 12:00:24.146450 [INF] 172.18.0.5:59552 - rid:11 - Route connection created
+[7] 2026/02/23 12:00:24.146605 [DBG] 172.18.0.4:6222 - rid:12 - Route connect msg sent
+[7] 2026/02/23 12:00:24.146635 [INF] 172.18.0.4:6222 - rid:12 - Route connection created
+[7] 2026/02/23 12:00:24.146759 [DBG] 172.18.0.5:59566 - rid:10 - Sent local subscriptions to route
+[7] 2026/02/23 12:00:24.146783 [DBG] 172.18.0.5:59566 - rid:10 - Registering remote route "NCXT5IVRJUSWLPKHRSX3IU7OIOZGDXK4CLKGMRY2FFCPBE6X5FNSZF2F" for account "$SYS"
+[7] 2026/02/23 12:00:24.146829 [DBG] 172.18.0.4:6222 - rid:12 - Registering remote route "NDNPN5PYNBYB6J6SB6IFFO7P4PQAGQMMERJPZANAG33O6ZYFFWB5YJGK"
+[7] 2026/02/23 12:00:24.146848 [DBG] 172.18.0.5:59552 - rid:11 - Registering remote route "NCXT5IVRJUSWLPKHRSX3IU7OIOZGDXK4CLKGMRY2FFCPBE6X5FNSZF2F"
+[7] 2026/02/23 12:00:24.148131 [INF] 172.18.0.5:59570 - rid:13 - Route connection created
+[7] 2026/02/23 12:00:24.148402 [DBG] 172.18.0.5:59570 - rid:13 - Registering remote route "NCXT5IVRJUSWLPKHRSX3IU7OIOZGDXK4CLKGMRY2FFCPBE6X5FNSZF2F"
+[7] 2026/02/23 12:00:24.148428 [DBG] Trying to connect to route on nats-dynamic:6222 (172.18.0.5:6222)
+[7] 2026/02/23 12:00:24.148683 [DBG] 172.18.0.5:6222 - rid:14 - Route connect msg sent
+[7] 2026/02/23 12:00:24.148708 [INF] 172.18.0.5:6222 - rid:14 - Route connection created
+[7] 2026/02/23 12:00:24.148796 [INF] 172.18.0.5:59582 - rid:15 - Route connection created
+[7] 2026/02/23 12:00:24.148848 [DBG] 172.18.0.5:6222 - rid:14 - Registering remote route "NCXT5IVRJUSWLPKHRSX3IU7OIOZGDXK4CLKGMRY2FFCPBE6X5FNSZF2F"
+[7] 2026/02/23 12:00:24.149060 [INF] 172.18.0.5:6222 - rid:14 - Router connection closed: Client Closed - Remote: 21a35ed9c0e6
+[7] 2026/02/23 12:00:24.149117 [DBG] 172.18.0.5:59582 - rid:15 - Detected duplicate remote route "NCXT5IVRJUSWLPKHRSX3IU7OIOZGDXK4CLKGMRY2FFCPBE6X5FNSZF2F"
+[7] 2026/02/23 12:00:24.149122 [INF] 172.18.0.5:59582 - rid:15 - Router connection closed: Duplicate Route - Remote: 21a35ed9c0e6
+[7] 2026/02/23 12:00:24.149267 [DBG] Attempting reconnect for solicited route "nats://nats-dynamic:6222"
+[7] 2026/02/23 12:00:24.228989 [INF] 172.18.0.5:59588 - rid:16 - Route connection created
+[7] 2026/02/23 12:00:24.229436 [DBG] 172.18.0.5:59588 - rid:16 - Registering remote route "NCXT5IVRJUSWLPKHRSX3IU7OIOZGDXK4CLKGMRY2FFCPBE6X5FNSZF2F"
+[7] 2026/02/23 12:00:24.244028 [WRN] Waiting for routing to be established...
+[7] 2026/02/23 12:00:24.244119 [DBG] Recovered JetStream cluster metadata
+[7] 2026/02/23 12:00:24.244131 [DBG] RAFT [hN2W5QPf - _meta_] Not snapshotting as there are no applied entries
+[7] 2026/02/23 12:00:24.244227 [WRN] JetStream has not established contact with a meta leader
+[7] 2026/02/23 12:00:24.245942 [DBG] RAFT [hN2W5QPf - _meta_] Received a voteRequest &{term:1 lastTerm:0 lastIndex:0 candidate:BM0RIz5s reply:$NRG.R.8iTXAa3C}
+[7] 2026/02/23 12:00:24.246006 [DBG] RAFT [hN2W5QPf - _meta_] Canceling catchup subscription since we are now up to date
+[7] 2026/02/23 12:00:24.258005 [DBG] RAFT [hN2W5QPf - _meta_] Sending a voteResponse &{term:1 peer:hN2W5QPf granted:true empty:true} -> "$NRG.R.8iTXAa3C"
+[7] 2026/02/23 12:00:24.260150 [DBG] RAFT [hN2W5QPf - _meta_] AppendEntry updating leader to "BM0RIz5s"
+[7] 2026/02/23 12:00:24.260342 [INF] JetStream cluster new metadata leader: 0f64530baf19/local
+[7] 2026/02/23 12:00:24.264596 [DBG] RAFT [hN2W5QPf - _meta_] Update peers from leader to map[BM0RIz5s:0xc00060a900]
+[7] 2026/02/23 12:00:24.269267 [DBG] RAFT [hN2W5QPf - _meta_] Added peer "butFCPLG"
+[7] 2026/02/23 12:00:24.274458 [DBG] RAFT [hN2W5QPf - _meta_] Installing snapshot of 0 bytes [1:2]
+[7] 2026/02/23 12:00:24.291561 [DBG] RAFT [hN2W5QPf - _meta_] Added peer "hN2W5QPf"
+[7] 2026/02/23 12:00:24.291592 [DBG] RAFT [hN2W5QPf - _meta_] Expanding our clustersize: 2 -> 3
+[7] 2026/02/23 12:00:24.296623 [DBG] RAFT [hN2W5QPf - _meta_] Installing snapshot of 0 bytes [1:3]
+[7] 2026/02/23 12:00:24.481868 [DBG] JetStream cluster creating raft group:&{Name:S-R3M-O00mero4 Peers:[butFCPLG hN2W5QPf BM0RIz5s] Storage:Memory Cluster:local Preferred:hN2W5QPf ScaleUp:false node:<nil>}
+[7] 2026/02/23 12:00:24.491234 [DBG] RAFT [hN2W5QPf - S-R3M-O00mero4] Started
+[7] 2026/02/23 12:00:24.491271 [DBG] RAFT [hN2W5QPf - S-R3M-O00mero4] Starting campaign
+[7] 2026/02/23 12:00:24.491330 [DBG] RAFT [hN2W5QPf - S-R3M-O00mero4] Update peers from leader to map[BM0RIz5s:0xc00029e090 butFCPLG:0xc00029e060 hN2W5QPf:0xc00029e030]
+[7] 2026/02/23 12:00:24.497819 [DBG] Starting stream monitor for '$G > event_stream' [S-R3M-O00mero4]
+[7] 2026/02/23 12:00:24.541655 [DBG] RAFT [hN2W5QPf - S-R3M-O00mero4] Switching to candidate
+[7] 2026/02/23 12:00:24.550769 [DBG] RAFT [hN2W5QPf - S-R3M-O00mero4] Sending out voteRequest {term:1 lastTerm:0 lastIndex:0 candidate:hN2W5QPf reply:}
+[7] 2026/02/23 12:00:24.563883 [DBG] RAFT [hN2W5QPf - S-R3M-O00mero4] Received a voteResponse &{term:1 peer:BM0RIz5s granted:true empty:false}
+[7] 2026/02/23 12:00:24.564023 [DBG] RAFT [hN2W5QPf - S-R3M-O00mero4] Switching to leader
+[7] 2026/02/23 12:00:24.564758 [INF] JetStream cluster new stream leader for '$G > event_stream'
+[7] 2026/02/23 12:00:24.566446 [DBG] RAFT [hN2W5QPf - S-R3M-O00mero4] Received a voteResponse &{term:1 peer:butFCPLG granted:true empty:false}
+Checking NATS port (attempt 2/15)...
+[7] 2026/02/23 12:00:25.130572 [DBG] [::1]:45773 - cid:21 - Client connection created
+NATS port 4222 is open!
+Checking for existing streams...
+[7] 2026/02/23 12:00:25.130741 [DBG] [::1]:45773 - cid:21 - Client connection closed: Client Closed
+[7] 2026/02/23 12:00:25.141370 [DBG] Checking JetStream cluster state
+[7] 2026/02/23 12:00:25.146894 [DBG] 127.0.0.1:41794 - cid:22 - Client connection created
+[7] 2026/02/23 12:00:25.150638 [DBG] 127.0.0.1:41794 - cid:22 - "v1.48.0:go:NATS CLI Version 0.3.1" - Client connection closed: Client Closed
+Streams already exist, skipping creation
+[7] 2026/02/23 12:00:25.152773 [DBG] 172.18.0.4:6222 - rid:12 - Router Ping Timer
+[7] 2026/02/23 12:00:25.197363 [DBG] 172.18.0.4:6222 - rid:9 - Router Ping Timer
+[7] 2026/02/23 12:00:25.210875 [DBG] 172.18.0.5:59566 - rid:10 - Router Ping Timer
+[7] 2026/02/23 12:00:25.229071 [DBG] Trying to connect to route on nats-dynamic:6222 (172.18.0.5:6222)
+[7] 2026/02/23 12:00:25.229347 [DBG] 172.18.0.5:6222 - rid:23 - Route connect msg sent
+[7] 2026/02/23 12:00:25.229371 [INF] 172.18.0.5:6222 - rid:23 - Route connection created
+[7] 2026/02/23 12:00:25.229690 [DBG] 172.18.0.5:6222 - rid:23 - Route pool size reached, closing extra connection to "NCXT5IVRJUSWLPKHRSX3IU7OIOZGDXK4CLKGMRY2FFCPBE6X5FNSZF2F"
+[7] 2026/02/23 12:00:25.229717 [DBG] 172.18.0.5:6222 - rid:23 - Detected duplicate remote route "NCXT5IVRJUSWLPKHRSX3IU7OIOZGDXK4CLKGMRY2FFCPBE6X5FNSZF2F"
+[7] 2026/02/23 12:00:25.229723 [INF] 172.18.0.5:6222 - rid:23 - Router connection closed: Duplicate Route - Remote: 21a35ed9c0e6
+[7] 2026/02/23 12:00:25.233032 [DBG] 172.18.0.5:59552 - rid:11 - Router Ping Timer
+[7] 2026/02/23 12:00:25.270696 [DBG] 172.18.0.5:59570 - rid:13 - Router Ping Timer
+[7] 2026/02/23 12:00:25.322460 [DBG] 172.18.0.4:6222 - rid:8 - Router Ping Timer
+[7] 2026/02/23 12:00:25.327980 [DBG] 172.18.0.5:59588 - rid:16 - Router Ping Timer
+[7] 2026/02/23 12:00:28.755398 [DBG] JetStream cluster creating raft group:&{Name:C-R3M-7fksC7uJ Peers:[butFCPLG hN2W5QPf BM0RIz5s] Storage:Memory Cluster:local Preferred:hN2W5QPf ScaleUp:false node:<nil>}
+[7] 2026/02/23 12:00:28.762961 [DBG] RAFT [hN2W5QPf - C-R3M-7fksC7uJ] Started
+[7] 2026/02/23 12:00:28.763007 [DBG] RAFT [hN2W5QPf - C-R3M-7fksC7uJ] Starting campaign
+[7] 2026/02/23 12:00:28.763054 [DBG] Starting consumer monitor for '$G > event_stream > 013086d0586f-consumer-0' [C-R3M-7fksC7uJ]
+[7] 2026/02/23 12:00:28.813151 [DBG] RAFT [hN2W5QPf - C-R3M-7fksC7uJ] Switching to candidate
+[7] 2026/02/23 12:00:28.819776 [DBG] RAFT [hN2W5QPf - C-R3M-7fksC7uJ] Sending out voteRequest {term:1 lastTerm:0 lastIndex:0 candidate:hN2W5QPf reply:}
+[7] 2026/02/23 12:00:28.829999 [DBG] RAFT [hN2W5QPf - C-R3M-7fksC7uJ] Received a voteResponse &{term:1 peer:BM0RIz5s granted:true empty:false}
+[7] 2026/02/23 12:00:28.830067 [DBG] RAFT [hN2W5QPf - C-R3M-7fksC7uJ] Switching to leader
+[7] 2026/02/23 12:00:28.830765 [INF] JetStream cluster new consumer leader for '$G > event_stream > 013086d0586f-consumer-0'
+[7] 2026/02/23 12:00:28.832348 [DBG] RAFT [hN2W5QPf - C-R3M-7fksC7uJ] Received a voteResponse &{term:1 peer:butFCPLG granted:true empty:false}
+[7] 2026/02/23 12:00:35.324845 [DBG] 172.18.0.1:33506 - cid:27 - Client connection created
+[7] 2026/02/23 12:00:35.339378 [DBG] 172.18.0.1:33506 - cid:27 - "v1.48.0:go:NATS CLI Version v0.3.1" - Client connection closed: Client Closed
+[7] 2026/02/23 12:00:39.699262 [DBG] 172.18.0.1:60548 - cid:28 - Client connection created
+[7] 2026/02/23 12:00:39.713462 [DBG] 172.18.0.1:60548 - cid:28 - "v1.48.0:go:NATS CLI Version v0.3.1" - Client connection closed: Client Closed
+[7] 2026/02/23 12:00:54.226718 [DBG] JetStream cluster checking for orphans
+[7] 2026/02/23 12:00:55.134966 [DBG] 172.18.0.4:6222 - rid:12 - Router Ping Timer
+[7] 2026/02/23 12:00:55.179549 [DBG] 172.18.0.4:6222 - rid:9 - Router Ping Timer
+[7] 2026/02/23 12:00:55.193071 [DBG] 172.18.0.5:59566 - rid:10 - Router Ping Timer
+[7] 2026/02/23 12:00:55.215363 [DBG] 172.18.0.5:59552 - rid:11 - Router Ping Timer
+[7] 2026/02/23 12:00:55.253329 [DBG] 172.18.0.5:59570 - rid:13 - Router Ping Timer
+[7] 2026/02/23 12:00:55.305046 [DBG] 172.18.0.4:6222 - rid:8 - Router Ping Timer
+[7] 2026/02/23 12:00:55.310278 [DBG] 172.18.0.5:59588 - rid:16 - Router Ping Timer
+[7] 2026/02/23 12:01:24.107611 [DBG] RAFT [hN2W5QPf - _meta_] Installing snapshot of 892 bytes [1:5]
+[7] 2026/02/23 12:01:25.118607 [DBG] 172.18.0.4:6222 - rid:12 - Router Ping Timer
+[7] 2026/02/23 12:01:25.163360 [DBG] 172.18.0.4:6222 - rid:9 - Router Ping Timer
+[7] 2026/02/23 12:01:25.176885 [DBG] 172.18.0.5:59566 - rid:10 - Router Ping Timer
+[7] 2026/02/23 12:01:25.199243 [DBG] 172.18.0.5:59552 - rid:11 - Router Ping Timer
+[7] 2026/02/23 12:01:25.236954 [DBG] 172.18.0.5:59570 - rid:13 - Router Ping Timer
+[7] 2026/02/23 12:01:25.288646 [DBG] 172.18.0.4:6222 - rid:8 - Router Ping Timer
+[7] 2026/02/23 12:01:25.293233 [DBG] 172.18.0.5:59588 - rid:16 - Router Ping Timer

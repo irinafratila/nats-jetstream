@@ -72,8 +72,6 @@ func startConsumers(ctx context.Context, js jetstream.JetStream, streamName, nam
 		consumerName := namespace + "-consumer-" + strconv.Itoa(i)
 		subjects := []string{"event." + strconv.Itoa(i) + ".>"}
 
-		// slog.Info("Creating consumer", "name", consumerName, "subjects", subjects)
-
 		// create a bunch of consumers
 		cons, err := js.CreateOrUpdateConsumer(ctx, streamName, jetstream.ConsumerConfig{
 			Durable:           consumerName,
@@ -96,8 +94,6 @@ func startConsumers(ctx context.Context, js jetstream.JetStream, streamName, nam
 					panic(fmt.Errorf("acknowledging message: %w", err))
 				}
 			}()
-
-			// slog.Info("Received message", "subject", msg.Subject(), "data", string(msg.Data()))
 		})
 		if err != nil {
 			return fmt.Errorf("creating consumer %v: %w", i, err)

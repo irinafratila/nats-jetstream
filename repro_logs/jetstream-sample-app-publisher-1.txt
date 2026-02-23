@@ -1,0 +1,5 @@
+2026/02/23 12:00:28 INFO NATS client connected cluster=local "connected server"=NCXT5IVRJUSWLPKHRSX3IU7OIOZGDXK4CLKGMRY2FFCPBE6X5FNSZF2F "visible cluster servers"=nats://nats-static-1:4222,nats://nats-dynamic:4222,nats://172.18.0.4:4222,nats://172.18.0.6:4222,nats://172.18.0.5:4222 "discovered cluster servers"=nats://172.18.0.4:4222,nats://172.18.0.6:4222,nats://172.18.0.5:4222
+2026/02/23 12:00:28 INFO Initiating Connect sequence..
+2026/02/23 12:00:28 INFO stream is ready stream=event_stream
+2026/02/23 12:00:58 INFO Shutting down
+2026/02/23 12:00:58 INFO stopping publisher idx=0

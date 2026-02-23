@@ -43,7 +43,6 @@ The issue presents itself as consumers with "unprocessed" messages and "last del
 │ ad4882ce6cc9-consumer-14 │             │ 2026-02-23 09:53:55 │           0 │           0 │ 207ms         │
 ╰──────────────────────────┴─────────────┴─────────────────────┴─────────────┴─────────────┴───────────────╯
 ```
-
 Once finished with the test, bring the cluster down:
 
 ```sh
@@ -68,4 +67,3 @@ nats consumer ls event_stream
 # Stop all services
 docker compose --profile static down
 ```
-# nats-jetstream
