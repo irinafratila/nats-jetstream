@@ -9,3 +9,6 @@ consumer-ls:
 
 stop:
 	docker compose --profile dynamic down
+
+monitor-primary-container:
+	docker exec -it nats-jetstream-nats-dynamic-1 sh -lc 'tail -f /tmp/log'
