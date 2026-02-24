@@ -1,7 +1,7 @@
 FROM nats:alpine
 
 # Install nats CLI - needed by the wrapper.
-RUN apk add --no-cache curl && \
+RUN apk add --no-cache curl jq && \
     curl -L https://github.com/nats-io/natscli/releases/download/v0.3.1/nats-0.3.1-linux-amd64.zip -o nats.zip && \
     unzip nats.zip && \
     mv nats-0.3.1-linux-amd64/nats /usr/local/bin/nats && \
