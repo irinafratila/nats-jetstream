@@ -22,7 +22,7 @@ services:
     restart: always
 
   nats-dynamic: 
-    command: "/bin/sh -c 'nats-server -D -cluster_name local -cluster nats://0.0.0.0:6222 -routes nats://nats-dynamic:6222 -js -server_name $${HOSTNAME}'"
+    command: "/bin/sh -c 'nats-server -D -cluster_name local -c /etc/nats/nats-server.conf -cluster nats://0.0.0.0:6222 -routes nats://nats-dynamic:6222 -js -server_name $${HOSTNAME}'"
     scale: 3
     domainname: nats
     build: 

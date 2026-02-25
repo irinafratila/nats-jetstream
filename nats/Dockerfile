@@ -12,7 +12,9 @@ STOPSIGNAL SIGUSR2
 
 COPY --chmod=0755 setup-jetstream.sh /usr/local/bin
 
+COPY nats-server.conf /etc/nats/nats-server.conf
+
 ENV JS_STREAM_NAME="event_stream"
 ENV JS_STREAM_REPLICAS="1"
 
-ENTRYPOINT ["setup-jetstream.sh", "docker-entrypoint.sh"]
+ENTRYPOINT ["setup-jetstream.sh"]
