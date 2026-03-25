@@ -17,16 +17,13 @@ trap_with_arg() {
 
 # Function to wait for NATS to be ready and create stream
 setup_jetstream() {
-    echo "Waiting for NATS to be ready..."
+    nats context unselect 
     
     # Wait for NATS port to be accepting connections (simple TCP check)
     max_attempts=15
     attempt=0
     while [ $attempt -lt $max_attempts ]; do
-        echo "Checking NATS port (attempt $((attempt + 1))/$max_attempts)..."
-
         if nc -z localhost 4222 2>/dev/null; then
-            echo "NATS port 4222 is open!"
             break
         fi
 
@@ -40,23 +37,20 @@ setup_jetstream() {
     fi
     
     # Check if stream already exists
-    echo "Checking for existing streams..."
     streams=$(nats stream ls -n 2>/dev/null || echo "")
     
     if [ -z "$streams" ]; then
-        echo "No streams found, creating event_stream..."
-
         # Set a flag to indicate whether the command was successful
         success=false
 
         # Loop until the command is successful or the maximum number of attempts is reached
         while [ $success = false ]; do
-            nats stream add ${JS_STREAM_NAME} \
+            nats stream add ${STREAM_NAME} \
                 --defaults \
-                --subjects "event.>" \
+                --subjects ${STREAM_SUBJECT} \
                 --description "All event messages" \
                 --storage "memory" \
-                --replicas ${JS_STREAM_REPLICAS} \
+                --replicas ${STREAM_REPLICAS} \
                 --ack \
                 --retention "interest" \
                 --discard "old" \
@@ -72,17 +66,29 @@ setup_jetstream() {
                 sleep 5
             fi
         done
-    
-        echo "Stream event_stream created successfully!"
     else
         echo "Streams already exist, skipping creation"
     fi
+
+    nats context select sys-context
 }
+
+evict_peer() {
+    echo "evicting peer ${HOSTNAME} from cluster.. "
+    nats server cluster peer-remove ${HOSTNAME} --server nats://nats-dynamic:4222 --user admin --password pass --force
+} 
 # Start the executable in the background
 "$@" &
 
 # Store the NATS process PID
 nats_pid=$!
+
+nats context save sys-context \
+  --server nats://localhost:4222 \
+  --user admin \
+  --password pass >/dev/null
+
+nats context select sys-context
 
 # Trap all signals relevant to NATS and forward them
 trap_with_arg 'forward_signal' SIGKILL SIGQUIT SIGINT SIGUSR1 SIGHUP SIGUSR2 SIGTERM
@@ -91,4 +97,10 @@ trap_with_arg 'forward_signal' SIGKILL SIGQUIT SIGINT SIGUSR1 SIGHUP SIGUSR2 SIG
 setup_jetstream &
 
 # Wait for all child process to finish
+wait "$nats_pid"
+
+evict_peer &
+
 wait
+
+
