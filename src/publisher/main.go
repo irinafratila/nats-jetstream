@@ -83,7 +83,7 @@ func startPublishers(ctx context.Context, js jetstream.JetStream, namespace stri
 					panic(fmt.Errorf("publishing message: %w", err))
 				}
 
-				slog.Info("publsihing message")
+				slog.Info("Publishing message")
 
 				count++
 

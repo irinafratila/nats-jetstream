@@ -75,7 +75,20 @@ setup_jetstream() {
 
 evict_peer() {
     echo "evicting peer ${HOSTNAME} from cluster.. "
-    nats server cluster peer-remove ${HOSTNAME} --server nats://nats-dynamic:4222 --user admin --password pass --force
+    max_attempts=6
+    attempt=1
+    while [ $attempt -le $max_attempts ]; do
+        nats server cluster peer-remove ${HOSTNAME} --server nats://nats-dynamic:4222 --user admin --password pass --force --trace
+        if [ $? -eq 0 ]; then
+            echo "Peer evicted successfully"
+            return 0
+        fi
+        echo "evict attempt $attempt failed, retrying..."
+        attempt=$((attempt + 1))
+        sleep 2
+    done
+    echo "Failed to evict peer after $max_attempts attempts"
+    return 1
 } 
 # Start the executable in the background
 "$@" &
@@ -93,14 +106,12 @@ nats context select sys-context
 # Trap all signals relevant to NATS and forward them
 trap_with_arg 'forward_signal' SIGKILL SIGQUIT SIGINT SIGUSR1 SIGHUP SIGUSR2 SIGTERM
 
-# Setup JetStream in the background
 setup_jetstream &
 
 # Wait for all child process to finish
 wait "$nats_pid"
 
 evict_peer &
+EVICT_PID=$!
 
-wait
-
-
+wait $EVICT_PID

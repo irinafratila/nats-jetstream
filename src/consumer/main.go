@@ -78,25 +78,26 @@ func startConsumers(ctx context.Context, js jetstream.JetStream, streamName, nam
 			FilterSubjects:    subjects,
 			DeliverPolicy:     jetstream.DeliverNewPolicy,
 			AckPolicy:         jetstream.AckExplicitPolicy,
-			AckWait:           5 * time.Second,
+			AckWait:           3 * time.Second,
 			InactiveThreshold: 14 * 24 * time.Hour, // 2 weeks
 			MaxAckPending:     100,
 			MaxDeliver:        100,
-			Replicas:          0, // Inherit from the stream
 		})
 		if err != nil {
 			panic(fmt.Errorf(time.Now().String(), "creating jetstream consumer for %s - %s: %w", subjects, consumerName, err))
 		}
 
-		_, err = cons.Consume(func(msg jetstream.Msg) {
-			defer func() {
-				slog.Info("consuming message")
+		_, err = cons.Consume(
+			func(msg jetstream.Msg) {
+				defer func() {
+					slog.Info("consuming message")
 
-				if err := msg.Ack(); err != nil {
-					panic(fmt.Errorf("acknowledging message: %w", err))
-				}
-			}()
-		},
+					if err := msg.Ack(); err != nil {
+						panic(fmt.Errorf("acknowledging message: %w", err))
+					}
+				}()
+			},
+
 			// This handler is invoked when an error occurs while consuming messages.
 			// Errors can be both terminal and non-terminal.
 			jetstream.ConsumeErrHandler(func(_ jetstream.ConsumeContext, err error) {
