@@ -11,5 +11,5 @@ down:
 	docker compose down
 
 remove:
-	docker stop nats-jetstream-nats-dynamic-1nats 
+	docker stop nats-jetstream-nats-dynamic-1
 	docker rm nats-jetstream-nats-dynamic-1

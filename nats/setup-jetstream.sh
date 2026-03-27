@@ -75,19 +75,24 @@ setup_jetstream() {
 
 evict_peer() {
     echo "evicting peer ${HOSTNAME} from cluster.. "
+
     max_attempts=6
     attempt=1
+
     while [ $attempt -le $max_attempts ]; do
         nats server cluster peer-remove ${HOSTNAME} --server nats://nats-dynamic:4222 --user admin --password pass --force --trace
+        
         if [ $? -eq 0 ]; then
             echo "Peer evicted successfully"
+
             return 0
         fi
         echo "evict attempt $attempt failed, retrying..."
         attempt=$((attempt + 1))
-        sleep 2
+
     done
     echo "Failed to evict peer after $max_attempts attempts"
+
     return 1
 } 
 # Start the executable in the background
