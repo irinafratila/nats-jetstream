@@ -1,69 +1,81 @@
 # Jetstream Issue Repro
 
-In the migration of our services platform from regular NATS publishers and subscribers, to Jetstream publishers and consumers, we noticed an issue. **Some consumers would be successfully created but would never process any messages.** The Jetstream client SDK does not seem to report any errors, and the consumers seem to be setup and active. This repo is an attempt to isolate and reproduce the problem.
-
-## Dynamic vs Static clustering
-
-Our platform uses a service discovery feature to populate a DNS record with all the IP addresses of our NATS nodes. This means we can set the same routes address for every node and let the nodes discover each other via DNS. This has worked reliably for forming a cluster in AWS ECS for many years. We have reproduced this "dynamic" setup here using docker compose and a single service scaled to three container instances.
-
-During our research we noticed the more typical way of configuring a cluster is to run three static nodes with unique addresses and routes values, i.e. statically configuring each node to be aware of the other two. So for testing we have also reproduced this "static" setup.
-
-Distinguishing these two cluster setups is important as we're only able to reproduce our issue with the "dynamic" setup.
+We enabled JetStream across our NATS cluster running in ECS and observed that consumers were not being consistently replicated to newly added nodes. We have been able to reproduce the issue locally: when scaling down from a 4-node cluster to 3, some consumers stop receiving message deliveries entirely, they show unprocessed messages and messages on the stream pile up.
 
 ## Stream creation wrapper
 
 To make sure that a stream always exists to create consumers against, we're using a bash wrapper script in the NATS container. The script starts NATS, waits for NATS to be available, then repeatedly tries to create a stream until successful. The wrapper also forwards any singals sent to the container to the NATS process.
+On NATS process exit, the wrapper puts the server into Lame Duck Mode and removes it from the RAFT group via ```nats server cluster peer-remove```.
 
 ## Repro
 
 With Docker and the NATS CLI installed, run the following:
 
 ```sh
-# Start the dynamic NATS cluster along with a number of consumers and publisher
-# apps.
-docker compose --profile dynamic up -d --build
-# List the consumers for our event stream
-NATS_URL=$(docker compose port nats-dynamic 4222) nats consumer ls event_stream
+docker compose up -d --build  --scale nats-dynamic=3
+```
+Scale the cluster to 4 nodes:
+
+```sh
+docker compose up -d --no-recreate --scale nats-dynamic=4
+```
+All is well so far, node 4 joins the RAFT group as expected. 
+```sh
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                           JetStream Summary                                          │
+├───────────────┬─────────┬─────────┬───────────┬──────────┬───────┬────────┬──────┬─────────┬─────────┤
+│ Server        │ Cluster │ Streams │ Consumers │ Messages │ Bytes │ Memory │ File │ API Req │ Pending │
+├───────────────┼─────────┼─────────┼───────────┼──────────┼───────┼────────┼──────┼─────────┼─────────┤
+│ 44a16aab2811  │ backend │ 0       │ 0         │ 0        │ 0 B   │ 0 B    │ 0 B  │ 0       │       0 │
+│ 6cde0f378d67* │ backend │ 1       │ 10        │ 0        │ 0 B   │ 0 B    │ 0 B  │ 19      │       0 │
+│ 7c385b9b1109  │ backend │ 1       │ 10        │ 0        │ 0 B   │ 0 B    │ 0 B  │ 1,171   │       0 │
+│ 80f5280f2f8f  │ backend │ 1       │ 10        │ 0        │ 0 B   │ 0 B    │ 0 B  │ 5       │       0 │
+├───────────────┼─────────┼─────────┼───────────┼──────────┼───────┼────────┼──────┼─────────┼─────────┤
+│               │         │ 3       │ 30        │ 0        │ 0 B   │ 0 B    │ 0 B  │ 1,195   │       0 │
+╰───────────────┴─────────┴─────────┴───────────┴──────────┴───────┴────────┴──────┴─────────┴─────────╯
+
+╭───────────────────────────────────────────────────────────────────────╮
+│          RAFT Meta Group Information - Lead cluster: backend          │
+├─────────────────┬──────────┬────────┬─────────┬────────┬────────┬─────┤
+│ Connection Name │ ID       │ Leader │ Current │ Online │ Active │ Lag │
+├─────────────────┼──────────┼────────┼─────────┼────────┼────────┼─────┤
+│ 44a16aab2811    │ rL2G5TjJ │        │ true    │ true   │ 465ms  │ 0   │
+│ 6cde0f378d67    │ HL5BadrF │ yes    │ true    │ true   │ 0s     │ 0   │
+│ 7c385b9b1109    │ L56AtEfh │        │ true    │ true   │ 465ms  │ 0   │
+│ 80f5280f2f8f    │ SWw1ylKk │        │ true    │ true   │ 465ms  │ 0   │
+╰─────────────────┴──────────┴────────┴─────────┴────────┴────────┴─────╯
 ```
 
-The issue presents itself as consumers with "unprocessed" messages and "last delivery" times of "never" (full table has been trimmed).
+Next, remove node 1:
 
+```sh
+docker stop nats-jetstream-nats-dynamic-1
+docker rm nats-jetstream-nats-dynamic-1
 ```
-╭──────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│                                                 Consumers                                                │
-├──────────────────────────┬─────────────┬─────────────────────┬─────────────┬─────────────┬───────────────┤
-│ Name                     │ Description │ Created             │ Ack Pending │ Unprocessed │ Last Delivery │
-├──────────────────────────┼─────────────┼─────────────────────┼─────────────┼─────────────┼───────────────┤
-│ ad4882ce6cc9-consumer-0  │             │ 2026-02-23 09:53:53 │           0 │           0 │ 207ms         │
-│ ad4882ce6cc9-consumer-1  │             │ 2026-02-23 09:53:53 │           0 │           0 │ 208ms         │
-│ ad4882ce6cc9-consumer-10 │             │ 2026-02-23 09:53:54 │           0 │          88 │ never         │
-│ ad4882ce6cc9-consumer-11 │             │ 2026-02-23 09:53:54 │           0 │          88 │ never         │
-│ ad4882ce6cc9-consumer-12 │             │ 2026-02-23 09:53:54 │           0 │           0 │ 207ms         │
-│ ad4882ce6cc9-consumer-13 │             │ 2026-02-23 09:53:54 │           0 │          87 │ never         │
-│ ad4882ce6cc9-consumer-14 │             │ 2026-02-23 09:53:55 │           0 │           0 │ 207ms         │
-╰──────────────────────────┴─────────────┴─────────────────────┴─────────────┴─────────────┴───────────────╯
+
+The issue presents itself as consumers with "unprocessed" messages.
+
+```sh
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                Consumers                                                │
+├─────────────────────────┬─────────────┬─────────────────────┬─────────────┬─────────────┬───────────────┤
+│ Name                    │ Description │ Created             │ Ack Pending │ Unprocessed │ Last Delivery │
+├─────────────────────────┼─────────────┼─────────────────────┼─────────────┼─────────────┼───────────────┤
+│ ff515921143d-consumer-0 │             │ 2026-03-27 15:35:22 │           0 │           0 │ 399ms         │
+│ ff515921143d-consumer-1 │             │ 2026-03-27 15:35:22 │           0 │           0 │ 399ms         │
+│ ff515921143d-consumer-2 │             │ 2026-03-27 15:35:22 │           0 │           0 │ 398ms         │
+│ ff515921143d-consumer-3 │             │ 2026-03-27 15:35:22 │           0 │           0 │ 399ms         │
+│ ff515921143d-consumer-4 │             │ 2026-03-27 15:35:22 │           0 │           0 │ 399ms         │
+│ ff515921143d-consumer-5 │             │ 2026-03-27 15:35:22 │           0 │          69 │ 41.64s        │
+│ ff515921143d-consumer-9 │             │ 2026-03-27 15:35:23 │           0 │           0 │ 398ms         │
+╰─────────────────────────┴─────────────┴─────────────────────┴─────────────┴─────────────┴───────────────╯
 ```
 Once finished with the test, bring the cluster down:
 
 ```sh
-docker compose --profile dynamic down
+docker compose down
 ```
 
 ### Repeatability
 
-The issue does not happen 100% of the time, but seems more likely with more consumers and publishers running - adjust these values in the docker-compose.yaml file.
-
-### Repro fails with static cluster
-
-The same test can be performed with the statically configured cluster and does not present the same issue:
-
-```sh
-# Start the static NATS cluster along with a number of consumers and publisher
-# apps.
-docker compose --profile static up -d --build
-# List the consumers for our event stream
-nats consumer ls event_stream
-
-# Stop all services
-docker compose --profile static down
-```
+The issue happens 100% of the time. 
