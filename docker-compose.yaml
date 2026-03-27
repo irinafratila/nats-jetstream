@@ -7,8 +7,10 @@ services:
       args:
         GO_MAIN_PACKAGE: consumer
     environment:
-      CONSUMER_NUM: 100
+      CONSUMER_NUM: 150
     restart: always
+    depends_on: 
+      - nats-dynamic
 
   publisher:
     scale: 1
@@ -18,56 +20,21 @@ services:
       args:
         GO_MAIN_PACKAGE: publisher
     environment:
-      PUBLISHER_NUM: 100
+      PUBLISHER_NUM: 10
     restart: always
+    depends_on: 
+      - nats-dynamic
 
   nats-dynamic: 
-    command: "/bin/sh -c 'nats-server -D -cluster_name local -c /etc/nats/nats-server.conf -cluster nats://0.0.0.0:6222 -routes nats://nats-dynamic:6222 -js -server_name $${HOSTNAME}'"
-    scale: 3
+    command: "/bin/sh -c 'nats-server -c /etc/nats/nats-server.conf -server_name $${HOSTNAME}'"
     domainname: nats
+    stop_grace_period: 45s
     build: 
       context: ./nats
     ports:
       - "4222-4232:4222"
     environment:
-      JS_STREAM_REPLICAS: 3
-    profiles: ["dynamic"]
-    depends_on:
-      - consumer
-      - publisher
+      STREAM_REPLICAS: 3
+      STREAM_NAME: "event_stream"
+      STREAM_SUBJECT: "event.>"
 
-  nats-static-1:
-    container_name: nats-static-1
-    command: nats-server -cluster_name local -cluster nats://0.0.0.0:6222 -js -routes nats://nats-static-1:6222 -server_name nats-static-1
-    build:
-      context: ./nats
-    ports:
-      - "4222:4222"
-    environment:
-      JS_STREAM_REPLICAS: 3
-    depends_on:
-      - consumer
-      - publisher
-    profiles: ["static"]
-
-  nats-static-2: 
-    container_name: nats-static-2
-    command: nats-server -cluster_name local -cluster nats://0.0.0.0:6222 -routes nats://nats-static-1:6222 -js -server_name nats-static-2
-    build:
-      context: ./nats
-    environment:
-      JS_STREAM_REPLICAS: 3
-    depends_on:
-      - nats-static-1
-    profiles: ["static"]
-
-  nats-static-3:
-    container_name: nats-static-3
-    command: nats-server -cluster_name local -cluster nats://0.0.0.0:6222 -routes nats://nats-static-1:6222 -js -server_name nats-static-3
-    build:
-      context: ./nats
-    environment:
-      JS_STREAM_REPLICAS: 3
-    depends_on:
-      - nats-static-1
-    profiles: ["static"]
