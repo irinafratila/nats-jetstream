@@ -27,7 +27,6 @@ services:
 
   nats-dynamic: 
     command: "/bin/sh -c 'nats-server -c /etc/nats/nats-server.conf -server_name $${HOSTNAME}'"
-    # scale: 3
     domainname: nats
     stop_grace_period: 45s
     build: 

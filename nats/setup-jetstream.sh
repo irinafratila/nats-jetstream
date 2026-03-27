@@ -74,23 +74,27 @@ setup_jetstream() {
 }
 
 evict_peer() {
-    echo "evicting peer ${HOSTNAME} from cluster.. "
+    echo "attempting to evict peer ${HOSTNAME} from cluster.. "
 
     max_attempts=6
     attempt=1
 
+    # Loop until the peer is evicted successfully. 
     while [ $attempt -le $max_attempts ]; do
         nats server cluster peer-remove ${HOSTNAME} --server nats://nats-dynamic:4222 --user admin --password pass --force --trace
-        
+
         if [ $? -eq 0 ]; then
             echo "Peer evicted successfully"
 
             return 0
         fi
         echo "evict attempt $attempt failed, retrying..."
+        
         attempt=$((attempt + 1))
+        sleep 2
 
     done
+    
     echo "Failed to evict peer after $max_attempts attempts"
 
     return 1
@@ -98,9 +102,14 @@ evict_peer() {
 # Start the executable in the background
 "$@" &
 
-# Store the NATS process PID
+# Store the NATS process PID.
 nats_pid=$!
 
+# Trap all signals relevant to NATS and forward them
+trap_with_arg 'forward_signal' SIGKILL SIGQUIT SIGINT SIGUSR1 SIGHUP SIGUSR2 SIGTERM
+
+# Creating and selecting a sys account context here to make debugging
+# easier with "nats server .." commands.
 nats context save sys-context \
   --server nats://localhost:4222 \
   --user admin \
@@ -108,15 +117,13 @@ nats context save sys-context \
 
 nats context select sys-context
 
-# Trap all signals relevant to NATS and forward them
-trap_with_arg 'forward_signal' SIGKILL SIGQUIT SIGINT SIGUSR1 SIGHUP SIGUSR2 SIGTERM
-
 setup_jetstream &
 
-# Wait for all child process to finish
+# Wait for NATS child process to finish.
 wait "$nats_pid"
 
 evict_peer &
 EVICT_PID=$!
 
+# Waiting for the evicting peer process to finish.
 wait $EVICT_PID
