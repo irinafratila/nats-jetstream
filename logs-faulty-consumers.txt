@@ -1,0 +1,45 @@
+2026-04-16 12:27:38.490 | [7] 2026/04/16 11:27:38.490902 [DBG] RAFT [MIlmmA0R - C-R3M-cgRnNyNF] Our first entry [1:19] does not match request from follower [1:0]
+2026-04-16 12:27:38.491 | [7] 2026/04/16 11:27:38.490921 [DBG] RAFT [MIlmmA0R - C-R3M-cgRnNyNF] Running catchup for "lN3DcwYM"
+2026-04-16 12:27:38.491 | [7] 2026/04/16 11:27:38.491001 [DBG] RAFT [MIlmmA0R - C-R3M-cgRnNyNF] Finished catching up
+2026-04-16 12:27:38.520 | [7] 2026/04/16 11:27:38.520464 [DBG] RAFT [MIlmmA0R - C-R3M-h7wYnn07] Being asked to catch up follower: "lN3DcwYM"
+2026-04-16 12:27:38.520 | [7] 2026/04/16 11:27:38.520492 [DBG] RAFT [MIlmmA0R - C-R3M-h7wYnn07] Need to send snapshot to follower
+2026-04-16 12:27:38.520 | [7] 2026/04/16 11:27:38.520578 [DBG] RAFT [MIlmmA0R - C-R3M-h7wYnn07] Snapshot sent, reset first catchup entry to 1
+2026-04-16 12:27:38.520 | [7] 2026/04/16 11:27:38.520607 [DBG] RAFT [MIlmmA0R - C-R3M-h7wYnn07] Our first entry [1:1] does not match request from follower [1:0]
+2026-04-16 12:27:38.520 | [7] 2026/04/16 11:27:38.520627 [DBG] RAFT [MIlmmA0R - C-R3M-h7wYnn07] Running catchup for "lN3DcwYM"
+2026-04-16 12:27:38.521 | [7] 2026/04/16 11:27:38.520911 [DBG] RAFT [MIlmmA0R - C-R3M-h7wYnn07] Finished catching up
+2026-04-16 12:27:38.994 | [7] 2026/04/16 11:27:38.993894 [DBG] 172.18.0.12:6222 - rid:842 - Router Ping Timer
+2026-04-16 12:27:39.295 | [7] 2026/04/16 11:27:39.295542 [DBG] RAFT [MIlmmA0R - C-R3M-wToiHgrK] Received a voteRequest &{term:24 lastTerm:1 lastIndex:48 candidate:BXHmNXoV reply:$NRG.R.hQN1hSFn}
+2026-04-16 12:27:39.295 | [7] 2026/04/16 11:27:39.295583 [DBG] RAFT [MIlmmA0R - C-R3M-wToiHgrK] Stepping down from candidate, detected higher term: 24 vs 23
+2026-04-16 12:27:39.295 | [7] 2026/04/16 11:27:39.295589 [DBG] RAFT [MIlmmA0R - C-R3M-wToiHgrK] Stepping down
+2026-04-16 12:27:39.295 | [7] 2026/04/16 11:27:39.295591 [DBG] RAFT [MIlmmA0R - C-R3M-wToiHgrK] Switching to follower
+2026-04-16 12:27:39.295 | [7] 2026/04/16 11:27:39.295619 [DBG] RAFT [MIlmmA0R - C-R3M-wToiHgrK] Sending a voteResponse &{term:24 peer:MIlmmA0R granted:true} -> "$NRG.R.hQN1hSFn"
+2026-04-16 12:27:40.162 | [7] 2026/04/16 11:27:40.162776 [DBG] RAFT [MIlmmA0R - C-R3M-SDTgQ4ma] Received a voteRequest &{term:23 lastTerm:1 lastIndex:156 candidate:BXHmNXoV reply:$NRG.R.lcmMPTJa}
+2026-04-16 12:27:40.163 | [7] 2026/04/16 11:27:40.162839 [DBG] RAFT [MIlmmA0R - C-R3M-SDTgQ4ma] Sending a voteResponse &{term:23 peer:MIlmmA0R granted:true} -> "$NRG.R.lcmMPTJa"
+2026-04-16 12:27:40.424 | [7] 2026/04/16 11:27:40.424748 [DBG] RAFT [MIlmmA0R - C-R3M-PfXthwZu] Received a voteRequest &{term:24 lastTerm:1 lastIndex:46 candidate:BXHmNXoV reply:$NRG.R.V7fBl4Lu}
+2026-04-16 12:27:40.424 | [7] 2026/04/16 11:27:40.424788 [DBG] RAFT [MIlmmA0R - C-R3M-PfXthwZu] Stepping down from candidate, detected higher term: 24 vs 23
+2026-04-16 12:27:40.424 | [7] 2026/04/16 11:27:40.424794 [DBG] RAFT [MIlmmA0R - C-R3M-PfXthwZu] Stepping down
+2026-04-16 12:27:40.424 | [7] 2026/04/16 11:27:40.424797 [DBG] RAFT [MIlmmA0R - C-R3M-PfXthwZu] Switching to follower
+2026-04-16 12:27:40.424 | [7] 2026/04/16 11:27:40.424824 [DBG] RAFT [MIlmmA0R - C-R3M-PfXthwZu] Sending a voteResponse &{term:24 peer:MIlmmA0R granted:true} -> "$NRG.R.V7fBl4Lu"
+2026-04-16 12:27:42.032 | [7] 2026/04/16 11:27:42.032732 [DBG] 172.18.0.5:6222 - rid:10 - Router Ping Timer
+2026-04-16 12:27:42.203 | [7] 2026/04/16 11:27:42.203268 [DBG] RAFT [MIlmmA0R - C-R3M-fxJGWMGw] Switching to candidate
+2026-04-16 12:27:42.203 | [7] 2026/04/16 11:27:42.203319 [DBG] RAFT [MIlmmA0R - C-R3M-fxJGWMGw] Sending out voteRequest {term:25 lastTerm:1 lastIndex:53 candidate:MIlmmA0R reply:}
+2026-04-16 12:27:42.203 | [7] 2026/04/16 11:27:42.203841 [DBG] RAFT [MIlmmA0R - C-R3M-fxJGWMGw] Received a voteResponse &{term:25 peer:BXHmNXoV granted:true}
+2026-04-16 12:27:42.242 | [7] 2026/04/16 11:27:42.242508 [DBG] RAFT [MIlmmA0R - C-R3M-08kcAoxF] Sending out voteRequest {term:25 lastTerm:1 lastIndex:80 candidate:MIlmmA0R reply:}
+2026-04-16 12:27:42.242 | [7] 2026/04/16 11:27:42.242559 [WRN] JetStream cluster consumer '$G > event_stream > inventory-event-inventory-evt-U3RvcmFnZSBQcmVzZW50ZXI' has NO quorum, stalled.
+2026-04-16 12:27:42.243 | [7] 2026/04/16 11:27:42.243151 [DBG] RAFT [MIlmmA0R - C-R3M-08kcAoxF] Received a voteResponse &{term:25 peer:BXHmNXoV granted:true}
+2026-04-16 12:27:43.730 | [7] 2026/04/16 11:27:43.730624 [DBG] RAFT [MIlmmA0R - C-R3M-6VMk5y6i] Received a voteRequest &{term:24 lastTerm:1 lastIndex:246 candidate:BXHmNXoV reply:$NRG.R.Hxw4Pmlk}
+2026-04-16 12:27:43.730 | [7] 2026/04/16 11:27:43.730680 [DBG] RAFT [MIlmmA0R - C-R3M-6VMk5y6i] Sending a voteResponse &{term:24 peer:MIlmmA0R granted:true} -> "$NRG.R.Hxw4Pmlk"
+2026-04-16 12:27:43.987 | [7] 2026/04/16 11:27:43.987088 [DBG] RAFT [MIlmmA0R - C-R3M-wToiHgrK] Switching to candidate
+2026-04-16 12:27:43.987 | [7] 2026/04/16 11:27:43.987120 [DBG] RAFT [MIlmmA0R - C-R3M-wToiHgrK] Sending out voteRequest {term:25 lastTerm:1 lastIndex:48 candidate:MIlmmA0R reply:}
+2026-04-16 12:27:43.987 | [7] 2026/04/16 11:27:43.987547 [DBG] RAFT [MIlmmA0R - C-R3M-wToiHgrK] Received a voteResponse &{term:25 peer:BXHmNXoV granted:true}
+2026-04-16 12:27:43.994 | [7] 2026/04/16 11:27:43.994795 [DBG] 172.18.0.12:6222 - rid:842 - Router Ping Timer
+2026-04-16 12:27:44.083 | [7] 2026/04/16 11:27:44.082863 [DBG] RAFT [MIlmmA0R - C-R3M-65So36Ac] Sending out voteRequest {term:24 lastTerm:1 lastIndex:72 candidate:MIlmmA0R reply:}
+2026-04-16 12:27:44.083 | [7] 2026/04/16 11:27:44.082875 [WRN] JetStream cluster consumer '$G > event_stream > sessions-event-sessions-evt-QWRkIHRvIFZvaWNlIFJvb20gUHJvY2Vzc29y' has NO quorum, stalled.
+2026-04-16 12:27:44.083 | [7] 2026/04/16 11:27:44.083214 [DBG] RAFT [MIlmmA0R - C-R3M-65So36Ac] Received a voteResponse &{term:24 peer:BXHmNXoV granted:true}
+2026-04-16 12:27:44.488 | [7] 2026/04/16 11:27:44.487971 [DBG] RAFT [MIlmmA0R - C-R3M-MfmLqepr] Received a voteRequest &{term:24 lastTerm:2 lastIndex:107 candidate:BXHmNXoV reply:$NRG.R.FfN2Q4Il}
+2026-04-16 12:27:44.488 | [7] 2026/04/16 11:27:44.488023 [DBG] RAFT [MIlmmA0R - C-R3M-MfmLqepr] Stepping down from candidate, detected higher term: 24 vs 23
+2026-04-16 12:27:44.488 | [7] 2026/04/16 11:27:44.488029 [DBG] RAFT [MIlmmA0R - C-R3M-MfmLqepr] Stepping down
+2026-04-16 12:27:44.488 | [7] 2026/04/16 11:27:44.488036 [DBG] RAFT [MIlmmA0R - C-R3M-MfmLqepr] Switching to follower
+2026-04-16 12:27:44.488 | [7] 2026/04/16 11:27:44.488064 [DBG] RAFT [MIlmmA0R - C-R3M-MfmLqepr] Sending a voteResponse &{term:24 peer:MIlmmA0R granted:true} -> "$NRG.R.FfN2Q4Il"
+2026-04-16 12:27:45.880 | [7] 2026/04/16 11:27:45.880563 [DBG] 127.0.0.1:53286 - cid:848 - Client connection created
+2026-04-16 12:27:46.187 | [7] 2026/04/16 11:27:46.187404 [DBG] 127.0.0.1:53286 - cid:848 - Client connection closed: Client Closed

@@ -101,7 +101,7 @@ func startConsumers(ctx context.Context, js jetstream.JetStream, streamName, nam
 			// This handler is invoked when an error occurs while consuming messages.
 			// Errors can be both terminal and non-terminal.
 			jetstream.ConsumeErrHandler(func(_ jetstream.ConsumeContext, err error) {
-				panic(fmt.Errorf("Consume error: %w", err))
+				fmt.Println("Consume error: %w", err)
 			}),
 		)
 
